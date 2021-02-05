@@ -37,7 +37,7 @@ function ContactableIndex() {
           : ""
       }
 
-      <h3>Contacts</h3>
+      <h3>CONTACTS</h3>
       <ul>
         ${contacts.join("")}
       </ul>
@@ -51,6 +51,21 @@ function ContactableIndex() {
       PageTemplate("Contactable", loadContent());
       this.anchorToAddNewContactClickListener();
       this.toChangeFavoriteClickListener();
+      this.redirectoShowProfileClickListener();
+    },
+    redirectoShowProfileClickListener: function () {
+      const contactItems = document.querySelectorAll("li.js-contact-element");
+      if (!contactItems.length) return;
+
+      contactItems.forEach((contactItem) => {
+        contactItem.addEventListener("click", (e) => {
+          if (e.target === contactItem) {
+            e.preventDefault();
+
+            PageTemplate("Profile contact", "Content");
+          }
+        });
+      });
     },
     toChangeFavoriteClickListener: function () {
       const anchors = document.querySelectorAll("li a.js-to-change-favorite");
