@@ -1,4 +1,5 @@
 import { signup } from "./../services/users_fetch.js";
+import { LoginForm } from "./login_form.js";
 import { PageTemplate } from "./template.js";
 
 function SignupForm() {
@@ -59,7 +60,7 @@ function SignupForm() {
         if (e.target === anchor) {
           e.preventDefault();
 
-          PageTemplate("Login", "Login form");
+          LoginForm().render();
         }
       });
     },

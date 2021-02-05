@@ -1,5 +1,5 @@
 const getToken = () => sessionStorage.getItem("token");
-const setToken = (token) => sessionStorage.getItem("token", token);
+const setToken = (token) => sessionStorage.setItem("token", token);
 const removeToken = () => sessionStorage.removeItem("token");
 
 const BASE_URL = "http://localhost:3000";

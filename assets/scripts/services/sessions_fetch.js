@@ -11,4 +11,4 @@ function login(credentials) {
   });
 }
 
-export { signup };
+export { login };
