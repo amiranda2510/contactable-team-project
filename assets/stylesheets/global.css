@@ -16,6 +16,7 @@
   margin: 0;
   padding: 0;
   font-family: var(--roboto-font);
+  font-weight: 400;
 }
 
 body {
@@ -28,4 +29,9 @@ a {
   color: var(--clr-blue);
   font-family: var(--roboto-font);
   font-size: 12px;
+}
+
+.error-msg {
+  color: var(--clr-red);
+  font-size: 10px;
 }

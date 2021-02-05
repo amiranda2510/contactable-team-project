@@ -4,22 +4,22 @@ import { PageTemplate } from "./template.js";
 
 function SignupForm() {
   let template = `
-      <form class="js-signup-form">
+      <form class="form-wrapper js-signup-form">
         <div class="form__content">
           <label class="form__field">
-            <input type="email" name="email" placeholder="email@mail.com" required>
-            <span>error</span>
+            <input type="email" name="email" placeholder="email" required>
+            <span class="error-msg">Error message</span>
           </label>
       
           <label class="form__field">
-            <input type="password" name="password" required>
-            <span hidden>error</span>
+            <input type="password" name="password" placeholder="password" required>
+            <span hidden class="error-msg">Error message</span>
           </label>
         </div>
 
-        <footer class="footer">
+        <footer class="footer footer--line">
           <a href="" class="js-signup-to-login-anchor btn-link">Login</a>
-          <input type="submit" class="btn-link" value="Create Account">
+          <input type="submit" class="btn btn-link" value="Create Account">
         </footer>
       </form>`;
 
