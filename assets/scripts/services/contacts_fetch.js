@@ -9,4 +9,16 @@ function listContacts() {
     },
   });
 }
-export { listContacts };
+
+function editContact(id, args) {
+  return apiFetch(`${BASE_URL}/contacts/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Token token=${getToken()}`,
+    },
+    body: JSON.stringify(args),
+  });
+}
+
+export { listContacts, editContact };

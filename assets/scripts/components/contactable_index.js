@@ -1,33 +1,88 @@
+import { STORE } from "../data.js";
+import { editContact } from "../services/contacts_fetch.js";
 import { PageTemplate } from "./template.js";
 
 function ContactableIndex() {
-  let content = `
-  <h3>FAVORITES</h3>
-  <ul>    
-    <li>
-      <img src="" alt="profile">
-      <p>Brian</p>
-      <span>Start</span>
-    </li>
+  let loadContent = () => {
+    let favorites = STORE.contacts.filter((contact) => contact.favorite);
 
-  </ul>
+    favorites = favorites.map(
+      (favorite) => `
+      <li data-id-contact='${favorite.id}' class="js-contact-element">
+        <img src="" alt="profile">
+        <p>${favorite.name}</p>
+        <a class='js-to-change-favorite' href="#update-favorite-state">${favorite.favorite}</a>
+      </li>
+    `
+    );
 
-  <h3>Contacts</h3>
-  <ul>
-    <li>
-      <img src="" alt="profile">
-      <p>Dan</p>
-      <span>Start</span>
-    </li>
-  </ul>
+    let contacts = STORE.contacts.map(
+      (contact) => `
+      <li data-id-contact='${contact.id}' class="js-contact-element">
+        <img src="" alt="profile">
+        <p>${contact.name}</p>
+        <a class='js-to-change-favorite' href="#update-favorite-state">${contact.favorite}</a>
+      </li>
+  `
+    );
 
-  <a href="#add-contact" class="js-anchor-to-add-new-contact">+</a>
-  `;
+    return `
+      ${
+        favorites.length
+          ? `
+        <h3>FAVORITES</h3>
+        <ul>
+          ${favorites.join("")}
+        </ul>`
+          : ""
+      }
+
+      <h3>Contacts</h3>
+      <ul>
+        ${contacts.join("")}
+      </ul>
+
+      <a href="#add-contact" class="js-anchor-to-add-new-contact">+</a>
+    `;
+  };
 
   return {
     render: function () {
-      PageTemplate("Contactable", content);
+      PageTemplate("Contactable", loadContent());
       this.anchorToAddNewContactClickListener();
+      this.toChangeFavoriteClickListener();
+    },
+    toChangeFavoriteClickListener: function () {
+      const anchors = document.querySelectorAll("li a.js-to-change-favorite");
+
+      if (!anchors.length) return;
+
+      anchors.forEach((anchor) => {
+        anchor.addEventListener("click", async (e) => {
+          if (anchor === e.target) {
+            e.preventDefault();
+
+            let idContact = parseInt(
+              anchor.closest("li.js-contact-element").dataset.idContact
+            );
+
+            let contactSelected = STORE.contacts.find(
+              (contact) => idContact === contact.id
+            );
+
+            let response = await editContact(idContact, {
+              favorite: !contactSelected.favorite,
+            });
+
+            if (response) {
+              STORE.contacts = STORE.contacts.map((contact) =>
+                contact.id === idContact ? response : contact
+              );
+            }
+            ContactableIndex().render();
+          }
+        });
+      });
     },
     anchorToAddNewContactClickListener: function () {
       const anchor = document.querySelector(".js-anchor-to-add-new-contact");
@@ -43,4 +98,5 @@ function ContactableIndex() {
     },
   };
 }
+
 export { ContactableIndex };
