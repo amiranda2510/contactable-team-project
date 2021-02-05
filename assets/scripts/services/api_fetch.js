@@ -1,3 +1,6 @@
+import { LoginForm } from "../components/login_form.js";
+import { removeToken } from "../data.js";
+
 async function apiFetch(...args) {
   try {
     let response = await fetch(...args);
@@ -9,7 +12,16 @@ async function apiFetch(...args) {
 
     return data;
   } catch (error) {
-    alert(error);
+    if (
+      [
+        "Access denied",
+        "NetworkError when attempting to fetch resource.",
+      ].includes(error.message)
+    ) {
+      removeToken();
+      LoginForm().render();
+    }
+    alert(error.message);
     return false;
   }
 }
