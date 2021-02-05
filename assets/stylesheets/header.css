@@ -1,0 +1,26 @@
+.header-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3.5rem;
+  padding: 1em;
+}
+
+.header--line {
+  border-bottom: 2px solid var(--clr-grey);
+  margin: 0 10px;
+  padding: 10px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--clr-dark-grey);
+  line-height: 28px;
+}
+
+.logo__title {
+  font-family: var(--arial-font);
+  font-size: 24px;
+  line-height: 32px;
+}

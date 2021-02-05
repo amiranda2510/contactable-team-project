@@ -1,0 +1,31 @@
+:root {
+  --clr-white: #ffffff;
+  --clr-black: #000000;
+  --clr-light-black: #262626;
+  --clr-dark-grey: #595959;
+  --clr-grey: #bfbfbf;
+  --clr-light-grey: #e8eaed;
+  --clr-blue: #2962ff;
+  --clr-red: #f5222d;
+  --roboto-font: "Roboto", sans-serif;
+  --arial-font: "Arial", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--roboto-font);
+}
+
+body {
+  background: var(--clr-light-grey);
+  display: grid;
+}
+
+a {
+  text-decoration: none;
+  color: var(--clr-blue);
+  font-family: var(--roboto-font);
+  font-size: 12px;
+}
