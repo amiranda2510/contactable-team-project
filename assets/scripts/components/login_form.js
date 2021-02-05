@@ -5,23 +5,23 @@ import { PageTemplate } from "./template.js";
 
 function LoginForm() {
   let formHTML = `
-  <form class="js-login-form">
-    <div class="form__content">
-      <label class="form__field">
-        <input type="email" name="email" placeholder="email@mail.com" required>
-        <span>error</span>
-      </label>
-  
-      <label class="form__field">
-        <input type="password" name="password" required>
-        <span hidden>error</span>
-      </label>
-    </div>
-    <footer class="footer">
-      <a href="" class="js-login-to-signup-anchor btn-link">Signup</a>
-      <input type="submit" class="btn-link" value="Login">
-    </footer>
-  </form>`;
+  <form action="" class="form-wrapper js-login-form">
+  <div class="form__content">
+    <label class="form__field">
+      <input type="email" name="email" placeholder="email" required>
+      <span>error</span>
+    </label>
+
+    <label class="form__field">
+      <input type="password" name="password" placeholder="password" required>
+      <span hidden>error</span>
+    </label>
+  </div>
+  <footer class="footer footer--line">
+    <a href="" class="js-login-to-signup-anchor btn-link">Signup</a>
+    <input type="submit" class="btn btn--link" value="Login">
+  </footer>
+</form>`;
 
   return {
     render: function () {
