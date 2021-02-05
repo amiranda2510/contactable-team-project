@@ -1,5 +1,5 @@
+import { ContactableIndex } from "./assets/scripts/components/contactable_index.js";
 import { LoginForm } from "./assets/scripts/components/login_form.js";
-import { PageTemplate } from "./assets/scripts/components/template.js";
 import { getToken } from "./assets/scripts/data.js";
 import { start } from "./assets/scripts/render_temp.js";
 //start();
@@ -7,7 +7,7 @@ import { start } from "./assets/scripts/render_temp.js";
 
 function init() {
   if (getToken()) {
-    PageTemplate("Contactable", "Main");
+    ContactableIndex().render();
   } else {
     LoginForm().render();
   }
