@@ -1,4 +1,4 @@
-import { SignupForm } from "./assets/scripts/components/signup_form.js";
+import { LoginForm } from "./assets/scripts/components/login_form.js";
 import { PageTemplate } from "./assets/scripts/components/template.js";
 import { getToken } from "./assets/scripts/data.js";
 import { start } from "./assets/scripts/render_temp.js";
@@ -9,7 +9,7 @@ function init() {
   if (getToken()) {
     PageTemplate("Contactable", "Main");
   } else {
-    SignupForm().render();
+    LoginForm().render();
   }
 }
 

@@ -1,4 +1,4 @@
-async function fetchApi(...args) {
+async function apiFetch(...args) {
   try {
     let response = await fetch(...args);
 
@@ -9,9 +9,9 @@ async function fetchApi(...args) {
 
     return data;
   } catch (error) {
-    console.error(error);
+    alert(error);
     return false;
   }
 }
 
-export { fetchApi };
+export { apiFetch };
