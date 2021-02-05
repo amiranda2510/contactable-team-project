@@ -1,0 +1,4 @@
+li.js-contact-element > img,
+li.js-contact-element > p {
+  pointer-events: none;
+}
