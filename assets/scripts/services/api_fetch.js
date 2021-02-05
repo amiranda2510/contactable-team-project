@@ -9,7 +9,7 @@ async function apiFetch(...args) {
 
     return data;
   } catch (error) {
-    console.error(error);
+    alert(error);
     return false;
   }
 }
