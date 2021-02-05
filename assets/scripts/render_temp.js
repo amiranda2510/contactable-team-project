@@ -45,26 +45,26 @@ function ContactDetails() {
 
 function Contacts() {
   return `
-  <h3>FAVORITES</h3>
-  <ul>    
-    <li>
-      <img src="" alt="profile">
-      <p>Brian</p>
-      <span>Start</span>
+  <h3 class = "contact__type header--line">FAVORITES</h3>
+  <ul class = "contact-wrapper">    
+    <li class = "contact__field selected">
+      <img class = "contact__img" src="" alt="profile">
+      <p class = "contact__name">Brian Vaughn</p>
+      <span class = "favorite-icon"><ion-icon name="star-outline"></ion-icon></span>
     </li>
 
   </ul>
 
-  <h3>Contacts</h3>
-  <ul>
-    <li>
-      <img src="" alt="profile">
-      <p>Dan</p>
-      <span>Start</span>
+  <h3 class = "contact__type header--line">Contacts</h3>
+  <ul class = "contact-wrapper">
+    <li class = "contact__field">
+      <img class = "contact__img" src="" alt="profile">
+      <p class = "contact__name">Dan</p>
+      <span class = "favorite-icon"><ion-icon name="star-outline"></span>
     </li>
   </ul>
 
-  <a href="#add-contact">+</a>
+  <a class="btn--add" href="#add-contact">+</a>
   `;
 }
 
@@ -73,7 +73,7 @@ function Main() {
   ContactDetails();
   return `
     <main>
-     ${FormLogin()}
+     ${Contacts()}
     </main>
   `;
 }
