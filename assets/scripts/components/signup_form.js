@@ -7,12 +7,12 @@ function SignupForm() {
       <form class="form-wrapper js-signup-form">
         <div class="form__content">
           <label class="form__field">
-            <input type="email" name="email" placeholder="email" required>
+            <input type="email" name="email" placeholder="Email" required>
             <span class="error-msg">Error message</span>
           </label>
       
           <label class="form__field">
-            <input type="password" name="password" placeholder="password" required>
+            <input type="password" name="password" placeholder="Password" required>
             <span hidden class="error-msg">Error message</span>
           </label>
         </div>
