@@ -1,25 +1,25 @@
 const Header = (title) => `
-  <header class="js-header">
-    <h2>${title}</h2>
+  <header class="header-main header--line js-header">
+    <h2 class="title logo__title ">${title}</h2>
     <a href="">Logout</a>
   </header>
 `;
 
 function FormLogin() {
   return `
-<form action="">
+<form action="" class="form-wrapper">
   <div class="form__content">
     <label class="form__field">
-      <input type="email" name="email" placeholder="email@mail.com">
+      <input type="email" name="email" placeholder="email">
       <span>error</span>
     </label>
 
     <label class="form__field">
-      <input type="password" name="password">
+      <input type="password" name="password" placeholder="password">
       <span hidden>error</span>
     </label>
   </div>
-  <footer class="footer">
+  <footer class="footer footer--line">
     <a href="" class="btn-link">Signup</a>
     <input type="submit" class="btn-link" value="Login">
   </footer>
@@ -73,7 +73,7 @@ function Main() {
   ContactDetails();
   return `
     <main>
-     ${Contacts()}
+     ${FormLogin()}
     </main>
   `;
 }
