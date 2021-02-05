@@ -1,0 +1,8 @@
+.btn {
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  color: var(--clr-blue);
+  font-size: 12px;
+  cursor: pointer;
+}
