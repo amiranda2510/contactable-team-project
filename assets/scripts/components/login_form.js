@@ -1,5 +1,7 @@
-import { removeToken, setToken } from "../data.js";
+import { removeToken, setToken, STORE } from "../data.js";
+import { listContacts } from "../services/contacts_fetch.js";
 import { login } from "../services/sessions_fetch.js";
+import { ContactableIndex } from "./contactable_index.js";
 import { SignupForm } from "./signup_form.js";
 import { PageTemplate } from "./template.js";
 
@@ -45,12 +47,13 @@ function LoginForm() {
 
           /** Update token */
           if (response) {
-            console.log(response);
             setToken(response.token);
 
+            form.reset(); // not necessary
+            /** Updating contacts */
+            STORE.contacts = await listContacts();
             /** Render content */
-            form.reset();
-            PageTemplate("Contactable", "contactable-content");
+            ContactableIndex().render();
           } else {
             removeToken();
           }
