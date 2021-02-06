@@ -1,33 +1,46 @@
 import { STORE } from "../data.js";
-import { createcontact } from "./../services/contacts_fetch.js";
 import { PageTemplate } from "./template.js";
 import { ContactableIndex } from "./contactable_index.js";
+import { editContact } from "./../services/contacts_fetch.js";
 
-function createContactForm() {
+function editContactForm(contact) {
   let template = `
-  <form class="form-wrapper js-create-contact-form">
+  <form class="form-wrapper js-edit-contact-form">
         <div class="form__content">
           <label class="form__field">
-            <input type="name" name="name" placeholder="Name" required>
+            <input value="${
+              contact.name
+            }" type="name" name="name" placeholder="Name" required>
             <span class="error-msg">Error message</span>
           </label>
       
           <label class="form__field">
-            <input type="number" name="number" placeholder="Number" required>
+            <input value="${
+              contact.number
+            }" type="number" name="number" placeholder="Number" required>
             <span hidden class="error-msg">Error message</span>
           </label>
 
           <label class="form__field">
-            <input type="email" name="email" placeholder="Email">
+            <input value="${
+              contact.email
+            }" type="email" name="email" placeholder="Email">
           </label>
 
           <label class="form__field">
             <select type="relation" name="relation">
-              <option value="" disabled selected>Relation</option>
-              <option value="Family">Family</option>
-              <option value="Friends">Friends</option>
-              <option value="Work">Work</option>
-              <option value="Acquaintance">Acquaintance</option>
+              <option value="Family" ${
+                contact.relation == "Family" ? "selected" : ""
+              }>Family</option>
+              <option value="Friends" ${
+                contact.relation == "Friends" ? "selected" : ""
+              }>Friends</option>
+              <option value="Work" ${
+                contact.relation == "Work" ? "selected" : ""
+              }>Work</option>
+              <option value="Acquaintance" ${
+                contact.relation == "Acquaintance" ? "selected" : ""
+              }>Acquaintance</option>
             </select>
           </label>
         </div>
@@ -40,12 +53,12 @@ function createContactForm() {
 
   return {
     render: function () {
-      PageTemplate("Create new contact", template);
-      this.createContactSubmitListener();
+      PageTemplate("Edit contact", template);
+      this.editContactSubmitListener();
       this.redirectToHomeAnchorClickListener();
     },
-    createContactSubmitListener: function () {
-      let form = document.querySelector(".js-create-contact-form");
+    editContactSubmitListener: function () {
+      let form = document.querySelector(".js-edit-contact-form");
       if (!form) return;
 
       form.addEventListener("submit", async (e) => {
@@ -53,15 +66,21 @@ function createContactForm() {
           e.preventDefault();
 
           let { name, number, email, relation } = form;
-          let newContact = await createcontact({
+          let editedContact = await editContact(contact.id, {
             name: name.value,
             number: number.value,
             email: email.value,
             relation: relation.value,
           });
 
-          if (newContact) {
-            STORE.contacts = [...STORE.contacts, newContact];
+          if (editedContact) {
+            STORE.contacts = STORE.contacts.map((el) => {
+              if (el.id === editedContact.id) {
+                return editedContact;
+              } else {
+                return el;
+              }
+            });
             ContactableIndex().render();
           }
         }
@@ -82,4 +101,4 @@ function createContactForm() {
   };
 }
 
-export { createContactForm };
+export { editContactForm };

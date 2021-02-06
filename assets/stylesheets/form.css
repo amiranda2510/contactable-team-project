@@ -15,13 +15,19 @@
   font-weight: 400;
 }
 
-.form__field input {
+.form__field input,
+.form__field select {
   width: 100%;
   border: none;
   border-bottom: 2px solid var(--clr-grey);
   margin-top: 16px;
   line-height: 25px;
   color: var(--clr-grey);
+}
+
+.form__field select {
+  padding-bottom: 5px;
+  background: transparent;
 }
 
 .footer {
