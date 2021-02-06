@@ -1,6 +1,6 @@
 import { STORE } from "../data.js";
 import { createcontact } from "./../services/contacts_fetch.js";
-import { PageTemplate } from "./template";
+import { PageTemplate } from "./template.js";
 import { ContactableIndex } from "./contactable_index.js";
 
 function createContactForm() {

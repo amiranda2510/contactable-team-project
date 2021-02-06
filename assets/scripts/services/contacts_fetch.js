@@ -1,4 +1,4 @@
-import { BASE_URL } from "./../data.js";
+import { BASE_URL, getToken } from "../data.js";
 import { apiFetch } from "./api_fetch.js";
 
 function createcontact(params) {
@@ -11,9 +11,6 @@ function createcontact(params) {
     body: JSON.stringify(params),
   });
 }
-
-import { BASE_URL, getToken } from "../data.js";
-import { apiFetch } from "./api_fetch.js";
 
 function listContacts() {
   return apiFetch(`${BASE_URL}/contacts`, {
