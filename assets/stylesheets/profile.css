@@ -1,0 +1,46 @@
+.profile__main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 16px;
+}
+
+.profile__main img {
+	margin-bottom: 12px;
+}
+
+.profile__main h1 {
+  font-family: var(--roboto-font);
+  color: var(--clr-light-black);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.profile__main p {
+  font-family: var(--roboto-font);
+  color: var(--clr-dark-grey);
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.profile__body {
+	display: flex;
+	flex-direction: column;
+	height: 50vh;
+	padding: 24px 70px;
+	gap: 16px;
+}
+
+.profile__body p {
+	font-family: var(--roboto-font);
+  color: var(--clr-light-black);
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.profile__body span {
+	color: var(--clr-dark-grey);
+}
+
