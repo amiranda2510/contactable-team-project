@@ -22,7 +22,8 @@ function createContactForm() {
           </label>
 
           <label class="form__field">
-            <select type="relation" name="relation" placeholder="Relation">
+            <select type="relation" name="relation">
+              <option value="" disabled selected>Relation</option>
               <option value="Family">Family</option>
               <option value="Friends">Friends</option>
               <option value="Work">Work</option>

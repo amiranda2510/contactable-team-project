@@ -3,6 +3,7 @@ import { LoginForm } from "./assets/scripts/components/login_form.js";
 import { getToken, removeToken, STORE } from "./assets/scripts/data.js";
 import { start } from "./assets/scripts/render_temp.js";
 import { listContacts } from "./assets/scripts/services/contacts_fetch.js";
+import { createContactForm } from "./assets/scripts/components/create_contact_form.js";
 //start();
 ////////////////////////////
 
@@ -25,7 +26,7 @@ async function init() {
         - 'NetworkError when attempting to fetch resource.'
       errors in all requests to server */
   } else {
-    LoginForm().render();
+    createContactForm().render();
   }
 }
 
