@@ -7,9 +7,11 @@ let logoutClickListener = () => {
     const logoutBtn = document.querySelector(".js-logout-btn");
     if (e.target === logoutBtn) {
       e.preventDefault();
-      await logout();
-      removeToken();
-      window.location = "/";
+      let response = await logout();
+      if (response) {
+        removeToken();
+        window.location = "/";
+      }
     }
   });
 };

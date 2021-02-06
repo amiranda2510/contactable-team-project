@@ -10,15 +10,7 @@ async function apiFetch(...args) {
     let data = await response.json();
 
     if (!response.ok) {
-      let errors = data.errors;
-
-      if (
-        errors &&
-        [
-          "Access denied",
-          "NetworkError when attempting to fetch resource.",
-        ].includes(errors.message)
-      ) {
+      if (data.errors && "Access denied" === data.errors[0]) {
         removeToken();
         LoginForm().render();
       }
@@ -31,19 +23,29 @@ async function apiFetch(...args) {
           .map((k) => `${k.toUpperCase()}: ${data[k].join(", ")}.`)
           .join("<br>");
 
-        console.log(data);
-
         container.innerHTML = `
         <div class="error-msg">${errorMessage}</div>`;
         setTimeout(() => (container.innerHTML = ""), 5800);
       }
+
       /** END displaying error messages */
 
-      throw new Error("Something was bad");
+      throw new Error(data.errors);
     }
 
     return data;
   } catch (error) {
+    const app = document.querySelector("div#app");
+    if (app.innerHTML === "") {
+      removeToken();
+      LoginForm().render();
+    }
+    const container = document.querySelector("div.js-notifications");
+    if (container) {
+      container.innerHTML = `<div class="error-msg">${error.message}</div>`;
+      setTimeout(() => (container.innerHTML = ""), 5800);
+    }
+
     return false;
   }
 }
