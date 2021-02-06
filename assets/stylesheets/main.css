@@ -8,5 +8,11 @@ main {
   position: relative;
   width: 100%;
   min-height: calc(480px);
-  padding-bottom: 110px;
+}
+
+@media only screen and (min-width: 768px) {
+  .main {
+    width: 70vw;
+    padding: 0 5%;
+  }
 }
