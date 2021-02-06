@@ -1,27 +1,29 @@
-import { removeToken, setToken } from "../data.js";
+import { removeToken, setToken, STORE } from "../data.js";
+import { listContacts } from "../services/contacts_fetch.js";
 import { login } from "../services/sessions_fetch.js";
+import { ContactableIndex } from "./contactable_index.js";
 import { SignupForm } from "./signup_form.js";
 import { PageTemplate } from "./template.js";
 
 function LoginForm() {
   let formHTML = `
-  <form class="js-login-form">
-    <div class="form__content">
-      <label class="form__field">
-        <input type="email" name="email" placeholder="email@mail.com" required>
-        <span>error</span>
-      </label>
-  
-      <label class="form__field">
-        <input type="password" name="password" required>
-        <span hidden>error</span>
-      </label>
-    </div>
-    <footer class="footer">
-      <a href="" class="js-login-to-signup-anchor btn-link">Signup</a>
-      <input type="submit" class="btn-link" value="Login">
-    </footer>
-  </form>`;
+  <form action="" class="form-wrapper js-login-form">
+  <div class="form__content">
+    <label class="form__field">
+      <input type="email" name="email" placeholder="email" required>
+      <span>error</span>
+    </label>
+
+    <label class="form__field">
+      <input type="password" name="password" placeholder="password" required>
+      <span hidden>error</span>
+    </label>
+  </div>
+  <footer class="footer footer--line">
+    <a href="" class="js-login-to-signup-anchor btn-link">Signup</a>
+    <input type="submit" class="btn btn--link" value="Login">
+  </footer>
+</form>`;
 
   return {
     render: function () {
@@ -45,12 +47,13 @@ function LoginForm() {
 
           /** Update token */
           if (response) {
-            console.log(response);
             setToken(response.token);
 
+            form.reset(); // not necessary
+            /** Updating contacts */
+            STORE.contacts = await listContacts();
             /** Render content */
-            form.reset();
-            PageTemplate("Contactable", "contactable-content");
+            ContactableIndex().render();
           } else {
             removeToken();
           }

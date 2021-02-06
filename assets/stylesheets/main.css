@@ -1,6 +1,12 @@
 .main {
   background-color: var(--clr-white);
   width: 375px;
-  height: 667px;
   place-self: center;
+}
+
+main {
+  position: relative;
+  width: 100%;
+  min-height: calc(480px);
+  padding-bottom: 110px;
 }
