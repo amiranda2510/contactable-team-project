@@ -34,5 +34,9 @@ a {
 
 .error-msg {
   color: var(--clr-red);
-  font-size: 10px;
+  font-size: 12px;
+  text-align: center;
+  width: 70%;
+  margin: 0 auto;
+  padding: 20px 0px 14px;
 }

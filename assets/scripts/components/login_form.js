@@ -11,12 +11,10 @@ function LoginForm() {
   <div class="form__content">
     <label class="form__field">
       <input type="email" name="email" placeholder="email" required>
-      <span class="error-msg">Error message</span>
     </label>
 
     <label class="form__field">
       <input type="password" name="password" placeholder="password" required>
-      <span hidden class="error-msg">Error message</span>
     </label>
   </div>
   <footer class="footer footer--line">

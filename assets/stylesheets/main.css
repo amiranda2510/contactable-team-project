@@ -13,6 +13,7 @@ main {
 @media only screen and (min-width: 768px) {
   .main {
     width: 70vw;
+    max-width: 1024px;
     padding: 0 5%;
   }
 }

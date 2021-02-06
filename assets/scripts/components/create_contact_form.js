@@ -9,12 +9,10 @@ function createContactForm() {
         <div class="form__content">
           <label class="form__field">
             <input type="name" name="name" placeholder="Name" required>
-            <span class="error-msg">Error message</span>
           </label>
       
           <label class="form__field">
             <input type="number" name="number" placeholder="Number" required>
-            <span hidden class="error-msg">Error message</span>
           </label>
 
           <label class="form__field">
