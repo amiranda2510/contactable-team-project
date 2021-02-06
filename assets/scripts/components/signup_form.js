@@ -1,4 +1,7 @@
+import { removeToken, setToken, STORE } from "../data.js";
+import { listContacts } from "../services/contacts_fetch.js";
 import { signup } from "./../services/users_fetch.js";
+import { ContactableIndex } from "./contactable_index.js";
 import { LoginForm } from "./login_form.js";
 import { PageTemplate } from "./template.js";
 
@@ -44,10 +47,13 @@ function SignupForm() {
           });
 
           if (newUser) {
-            sessionStorage.token = newUser.token;
-            PageTemplate("Contactable", "contactable-content");
+            setToken(newUser.token);
+
+            STORE.contacts = await listContacts();
+            /** Render content */
+            ContactableIndex().render();
           } else {
-            sessionStorage.removeItem("token");
+            removeToken();
           }
         }
       });

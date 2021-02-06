@@ -1,5 +1,7 @@
+import { STORE } from "../data.js";
 import { createcontact } from "./../services/contacts_fetch.js";
 import { PageTemplate } from "./template";
+import { ContactableIndex } from "./contactable_index.js";
 
 function createContactForm() {
   let template = `
@@ -58,10 +60,25 @@ function createContactForm() {
           });
 
           if (newContact) {
-            console.log(newContact);
+            STORE.contacts = [...STORE.contacts, newContact];
+            ContactableIndex().render();
           }
+        }
+      });
+    },
+    redirectToHomeAnchorClickListener: function () {
+      const anchor = document.querySelector(".js-redirect-to-home-anchor");
+      if (!anchor) return;
+
+      anchor.addEventListener("click", (e) => {
+        if (e.targe === anchor) {
+          e.preventDefault();
+
+          ContactableIndex().render();
         }
       });
     },
   };
 }
+
+export { createContactForm };
