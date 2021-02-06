@@ -1,20 +1,4 @@
-import { getToken, removeToken } from "../data.js";
-import { logout } from "../services/sessions_fetch.js";
-
-let logoutClickListener = () => {
-  const parent = document.querySelector("#app");
-  parent.addEventListener("click", async (e) => {
-    const logoutBtn = document.querySelector(".js-logout-btn");
-    if (e.target === logoutBtn) {
-      e.preventDefault();
-      await logout();
-      removeToken();
-      window.location = "/";
-    }
-  });
-};
-
-logoutClickListener();
+import { getToken } from "../data.js";
 
 function PageTemplate(title, body) {
   const divApp = document.querySelector("#app");
