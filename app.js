@@ -26,7 +26,7 @@ async function init() {
         - 'NetworkError when attempting to fetch resource.'
       errors in all requests to server */
   } else {
-    createContactForm().render();
+    LoginForm().render();
   }
 }
 

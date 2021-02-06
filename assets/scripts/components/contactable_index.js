@@ -2,6 +2,7 @@ import { STORE } from "../data.js";
 import { editContact } from "../services/contacts_fetch.js";
 import { PageTemplate } from "./template.js";
 import { createContactForm } from "./create_contact_form.js";
+import { showContactDetail } from "./contact_detail.js";
 
 function ContactableIndex() {
   let loadContent = () => {
@@ -59,11 +60,11 @@ function ContactableIndex() {
       if (!contactItems.length) return;
 
       contactItems.forEach((contactItem) => {
-        contactItem.addEventListener("click", (e) => {
+        contactItem.addEventListener("click", async (e) => {
           if (e.target === contactItem) {
             e.preventDefault();
 
-            PageTemplate("Profile contact", "Content");
+            (await showContactDetail(contactItem.dataset.idContact)).render();
           }
         });
       });

@@ -6,7 +6,7 @@ function createcontact(params) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Token token=${getToken}`,
+      Authorization: `Token token=${getToken()}`,
     },
     body: JSON.stringify(params),
   });
@@ -14,6 +14,15 @@ function createcontact(params) {
 
 function listContacts() {
   return apiFetch(`${BASE_URL}/contacts`, {
+    method: "GET",
+    headers: {
+      Authorization: `Token token=${getToken()}`,
+    },
+  });
+}
+
+function showContact(id) {
+  return apiFetch(`${BASE_URL}/contacts/${id}`, {
     method: "GET",
     headers: {
       Authorization: `Token token=${getToken()}`,
@@ -32,4 +41,13 @@ function editContact(id, args) {
   });
 }
 
-export { listContacts, editContact, createcontact };
+function deleteContact(id) {
+  return apiFetch(`${BASE_URL}/contacts/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Token token=${getToken()}`,
+    },
+  });
+}
+
+export { listContacts, editContact, createcontact, showContact, deleteContact };

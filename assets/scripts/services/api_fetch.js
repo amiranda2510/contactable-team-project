@@ -5,7 +5,7 @@ async function apiFetch(...args) {
   try {
     let response = await fetch(...args);
 
-    if (response.status === 204) return await response.text();
+    if (response.status === 204) return true;
 
     let data = await response.json();
     if (!response.ok) throw new Error(data.errors);
