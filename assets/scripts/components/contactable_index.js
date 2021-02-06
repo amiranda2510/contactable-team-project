@@ -9,20 +9,24 @@ function ContactableIndex() {
 
     favorites = favorites.map(
       (favorite) => `
-      <li data-id-contact='${favorite.id}' class="js-contact-element">
-        <img src="" alt="profile">
-        <p>${favorite.name}</p>
-        <a class='js-to-change-favorite' href="#update-favorite-state">${favorite.favorite}</a>
+      <li data-id-contact='${favorite.id}' class="js-contact-element contact__field">
+        <img src="assets/images/profile.png" alt="profile" class="contact__img">
+        <p class = "contact__name">${favorite.name}</p>
+        <a class='js-to-change-favorite favorite-icon selected' href="#update-favorite-state">
+          <ion-icon name="star-outline"></ion-icon>
+        </a>
       </li>
     `
     );
 
     let contacts = STORE.contacts.map(
       (contact) => `
-      <li data-id-contact='${contact.id}' class="js-contact-element">
-        <img src="" alt="profile">
-        <p>${contact.name}</p>
-        <a class='js-to-change-favorite' href="#update-favorite-state">${contact.favorite}</a>
+      <li data-id-contact='${contact.id}' class="js-contact-element contact__field">
+        <img src="assets/images/profile.png" alt="profile" class="contact__img">
+        <p class="contact__name">${contact.name}</p>
+        <a class='js-to-change-favorite favorite-icon ${contact.favorite ? 'selected' : ''}' href="#update-favorite-state">
+          <ion-icon name="star-outline"></ion-icon>
+        </a>
       </li>
   `
     );
@@ -31,19 +35,19 @@ function ContactableIndex() {
       ${
         favorites.length
           ? `
-        <h3>FAVORITES</h3>
-        <ul>
+        <h3 class="contact__type header--line">FAVORITES</h3>
+        <ul class="contact-wrapper">
           ${favorites.join("")}
         </ul>`
           : ""
       }
 
-      <h3>CONTACTS</h3>
-      <ul>
+      <h3 class="contact__type header--line">CONTACTS</h3>
+      <ul class = "contact-wrapper">
         ${contacts.join("")}
       </ul>
 
-      <a href="#add-contact" class="js-anchor-to-add-new-contact">+</a>
+      <a href="#add-contact" class="js-anchor-to-add-new-contact btn--add">+</a>
     `;
   };
 
