@@ -43,7 +43,7 @@ function ContactableIndex() {
           : ""
       }
 
-      <h3 class="contact__type header--line">CONTACTS</h3>
+      <h3 class="contact__type header--line">CONTACTS (${contacts.length})</h3>
       <ul class = "contact-wrapper">
         ${contacts.join("")}
       </ul>

@@ -1,11 +1,8 @@
 import { ContactableIndex } from "./assets/scripts/components/contactable_index.js";
 import { LoginForm } from "./assets/scripts/components/login_form.js";
-import { getToken, removeToken, STORE } from "./assets/scripts/data.js";
-import { start } from "./assets/scripts/render_temp.js";
+import { getToken, STORE } from "./assets/scripts/data.js";
+import { logoutClickListener } from "./assets/scripts/listeners/logout_listener.js";
 import { listContacts } from "./assets/scripts/services/contacts_fetch.js";
-import { createContactForm } from "./assets/scripts/components/create_contact_form.js";
-//start();
-////////////////////////////
 
 async function init() {
   if (getToken()) {
@@ -28,6 +25,7 @@ async function init() {
   } else {
     LoginForm().render();
   }
+  logoutClickListener();
 }
 
 init();

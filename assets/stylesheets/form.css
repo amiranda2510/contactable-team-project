@@ -22,7 +22,17 @@
   border-bottom: 2px solid var(--clr-grey);
   margin-top: 16px;
   line-height: 25px;
+}
+
+.form__field input::placeholder {
   color: var(--clr-grey);
+}
+
+.form__field input,
+.form__field select {
+  color: var(--clr-light-black);
+  margin-bottom: 16px;
+  outline: none;
 }
 
 .form__field select {

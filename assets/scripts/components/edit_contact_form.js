@@ -11,14 +11,12 @@ function editContactForm(contact) {
             <input value="${
               contact.name
             }" type="name" name="name" placeholder="Name" required>
-            <span class="error-msg">Error message</span>
           </label>
       
           <label class="form__field">
             <input value="${
               contact.number
             }" type="number" name="number" placeholder="Number" required>
-            <span hidden class="error-msg">Error message</span>
           </label>
 
           <label class="form__field">
