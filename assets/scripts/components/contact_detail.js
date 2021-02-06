@@ -10,13 +10,14 @@ async function showContactDetail(id) {
 
   let template = `
   <section>
-    <div>
+    <div class="profile__main">
+      <img src="assets/images/profile.png" alt="profile" class="profile__img">
       <h1>${contact.name}</h1>
       <p>${contact.relation}</p>
     </div>
-    <div>
-      <p>Number: ${contact.number}</p>
-      <p>Email: ${contact.email}</p>
+    <div class="profile__body">
+      <p><span>Number:</span> ${contact.number}</p>
+      <p><span>Email:</span> ${contact.email}</p>
     </div>
     <footer class="footer footer--line">
       <a href="" class="js-back-anchor btn">Back</a>
@@ -28,7 +29,7 @@ async function showContactDetail(id) {
 
   return {
     render: function () {
-      PageTemplate("Contact Details", template);
+      PageTemplate("Contact Detail", template);
       this.redirectToHomeAnchorClickListener();
       this.deleteContactClickListener();
       this.editContactClickListener();

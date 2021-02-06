@@ -19,8 +19,7 @@
 .contact__img {
   width: 32px;
   height: 32px;
-  border-radius: 50% 50%;
-  background-color: aqua;
+  border-radius: 50%;
 }
 
 .contact__name {
