@@ -1,6 +1,7 @@
 import { STORE } from "../data.js";
 import { editContact } from "../services/contacts_fetch.js";
 import { PageTemplate } from "./template.js";
+import { createContactForm } from "./create_contact_form.js";
 
 function ContactableIndex() {
   let loadContent = () => {
@@ -107,7 +108,7 @@ function ContactableIndex() {
         if (e.target === anchor) {
           e.preventDefault();
 
-          PageTemplate("Create new contact", "My form");
+          createContactForm().render();
         }
       });
     },
